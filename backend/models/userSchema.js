@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const messageSchema = new mongoose.Schema({
   role: { type: String, required: true },
   content: { type: String, required: true },
-  timestamp: { type: Date, default: Date.now, index: { expires: "30d" } },
+  timestamp: { type: Date, default: Date.now, index: { expires: "15d" } },
 });
 
 // User schema

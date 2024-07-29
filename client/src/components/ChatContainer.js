@@ -4,9 +4,9 @@ import ChatWindow from "./ChatWindow";
 import MessageInput from "./MessageInput";
 import useChat from "../hooks/useChat";
 
-const ChatContainer = ({ userName }) => {
+const ChatContainer = ({ userName, userID }) => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  const { history, isTyping, sendMessage } = useChat(userName);
+  const { history, isTyping, sendMessage } = useChat(userName, userID);
 
   return (
     <Box

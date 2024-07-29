@@ -16,8 +16,8 @@ import RagImage from "../assets/RAG.jpg";
 const InfoModal = ({ open, onClose, onStart }) => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
-  const techStackLeft = ["Node.js", "Express.js", "MongoDB", "OpenAI LLM"];
-  const techStackRight = ["VectorDB", "RAG", "Simple Prompts", "React.js"];
+  const techStackLeft = ["NodeJS", "ExpressJS", "MongoDB", "OpenAI LLM"];
+  const techStackRight = ["VectorDB", "RAG", "Simple Prompts", "ReactJS"];
 
   return (
     <Modal
@@ -64,8 +64,7 @@ const InfoModal = ({ open, onClose, onStart }) => {
           textAlign="center"
           sx={{ opacity: "95%", mt: 2 }}
         >
-          I am a replica of Vinay. You can chat with me or ask me anything about
-          Vinay
+          I am replica of Vinay. You can ask me anything about Vinay
         </Typography>
         <Box
           component="img"

@@ -58,5 +58,5 @@ export const getInitialMessage = (userName) => {
     return result[0].item.message;
   }
 
-  return `Hi ${userName}, ala vunnav ?`;
+  return `Hi ${userName}, how are you ?`;
 };

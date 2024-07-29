@@ -11,6 +11,7 @@ const Home = () => {
   const [userName, setUserName] = useState(
     () => getItemWithExpiry("userName") || ""
   );
+  const [userID, setUserID] = useState(() => getItemWithExpiry("userID") || "");
 
   useEffect(() => {
     setShowInfoModal(true);
@@ -23,17 +24,25 @@ const Home = () => {
     }
   };
 
+  const generateUserID = (name) => {
+    const randomNumber = Math.floor(10000 + Math.random() * 90000);
+    return `${name}${randomNumber}`;
+  };
+
   const handleNameSubmit = (name) => {
     const expiryTime = 180 * 24 * 60 * 60 * 1000;
+    const newUserID = generateUserID(name);
     setItemWithExpiry("userName", name, expiryTime);
+    setItemWithExpiry("userID", newUserID, expiryTime);
     setItemWithExpiry("hasVisited", true, expiryTime);
     setUserName(name);
+    setUserID(newUserID);
     setShowNameModal(false);
   };
 
   return (
     <Box>
-      <ChatContainer key={userName} userName={userName} />
+      <ChatContainer key={userName} userName={userName} userID={userID} />
       <InfoModal
         open={showInfoModal}
         onClose={() => setShowInfoModal(false)}
