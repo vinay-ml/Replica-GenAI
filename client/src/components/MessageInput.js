@@ -20,7 +20,7 @@ const MessageInput = ({ onSend, isTyping }) => {
   };
 
   return (
-    <Box>
+    <Box sx={{ mb: 1 }}>
       <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
         <TextField
           inputRef={inputRef}
@@ -41,7 +41,10 @@ const MessageInput = ({ onSend, isTyping }) => {
           <SendIcon fontSize="large" />
         </IconButton>
       </Box>
-      <Link sx={{ ml: 8, cursor: "pointer" }} onClick={handleLearnMoreClick}>
+      <Link
+        sx={{ ml: 2, cursor: "pointer", fontSize: 16 }}
+        onClick={handleLearnMoreClick}
+      >
         Want to learn how it is created ? Click Here
       </Link>
     </Box>
