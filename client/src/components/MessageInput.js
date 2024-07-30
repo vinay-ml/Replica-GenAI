@@ -23,7 +23,7 @@ const MessageInput = ({ onSend, isTyping }) => {
     <Box sx={{ mb: 1 }}>
       <Box sx={{ display: "flex", alignItems: "center", p: 2 }}>
         <TextField
-          inputRef={inputRef}
+          // inputRef={inputRef}
           value={isTyping ? "Typing..." : message}
           onChange={(e) => setMessage(e.target.value)}
           variant="outlined"

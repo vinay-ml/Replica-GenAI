@@ -20,7 +20,7 @@ const LearnMore = () => {
 
   return (
     <Box
-      p={2}
+      p={1}
       sx={{
         width: {
           xs: "100%",

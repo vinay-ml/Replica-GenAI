@@ -23,17 +23,7 @@ export default mongoose.model("Vector", vectorSchema);
   return (
     <Box
       sx={{
-        width: {
-          xs: "100%",
-          sm: "100%",
-          md: "75%",
-          lg: "75%",
-          xl: "85%",
-        },
-        overflowX: "auto",
-        backgroundColor: "#2d2d2d",
-        borderRadius: 1,
-        p: 2,
+        borderRadius: 5,
       }}
     >
       <SyntaxHighlighter language="javascript" style={atomDark}>
