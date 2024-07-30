@@ -20,7 +20,6 @@ router.post("/document", async (req, res) => {
 
 router.post("/query-embedding", async (req, res) => {
   const { query, username, history } = req.body;
-
   try {
     const { response, updatedHistory } = await chatService(
       query,

@@ -70,7 +70,7 @@ const InfoModal = ({ open, onClose, onStart }) => {
           component="img"
           src={RagImage}
           alt="RAG"
-          sx={{ height: "100%", width: "100%", mt: 2 }}
+          sx={{ height: "100%", width: "100%", mt: 2, borderRadius: 5 }}
         />
         <Typography variant="h6" component="h5" sx={{ opacity: "95%", mt: 1 }}>
           Tech Stack Used:
