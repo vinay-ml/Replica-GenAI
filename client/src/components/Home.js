@@ -30,7 +30,7 @@ const Home = () => {
   };
 
   const handleNameSubmit = (name) => {
-    const expiryTime = 180 * 24 * 60 * 60 * 1000;
+    const expiryTime = 90 * 24 * 60 * 60 * 1000;
     const newUserID = generateUserID(name);
     setItemWithExpiry("userName", name, expiryTime);
     setItemWithExpiry("userID", newUserID, expiryTime);

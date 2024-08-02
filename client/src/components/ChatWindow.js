@@ -1,17 +1,24 @@
-import React, { useRef, useEffect } from "react";
+import React, {
+  useRef,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import { Box, List } from "@mui/material";
 import MessageList from "./MessageList";
 import "./ChatWindow.css";
 
-const ChatWindow = ({ history, isTyping }) => {
+const ChatWindow = forwardRef(({ history, isTyping }, ref) => {
   const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  useImperativeHandle(ref, () => ({
+    scrollToBottom: () => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    },
+  }));
 
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history, isTyping]);
 
   return (
@@ -30,6 +37,6 @@ const ChatWindow = ({ history, isTyping }) => {
       </List>
     </Box>
   );
-};
+});
 
 export default ChatWindow;

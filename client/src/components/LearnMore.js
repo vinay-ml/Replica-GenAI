@@ -16,6 +16,7 @@ const LearnMore = () => {
 
   const handleBackToHome = () => {
     navigate("/");
+    window.location.reload();
   };
 
   return (
