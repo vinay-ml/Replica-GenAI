@@ -7,11 +7,11 @@ import useChat from "../hooks/useChat";
 const ChatContainer = ({ userName, userID }) => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const { history, isTyping, sendMessage } = useChat(userName, userID);
-  const messageInputRef = useRef(null);
+  const chatWindowRef = useRef(null);
 
   const handleSendMessage = (message) => {
     sendMessage(message);
-    messageInputRef.current.scrollToBottom();
+    chatWindowRef.current.scrollToBottom();
   };
 
   return (
@@ -32,11 +32,7 @@ const ChatContainer = ({ userName, userID }) => {
           flexDirection: "column",
         }}
       >
-        <ChatWindow
-          history={history}
-          isTyping={isTyping}
-          ref={messageInputRef}
-        />
+        <ChatWindow history={history} isTyping={isTyping} ref={chatWindowRef} />
         <MessageInput onSend={handleSendMessage} isTyping={isTyping} />
       </Box>
     </Box>
