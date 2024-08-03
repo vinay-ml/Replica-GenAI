@@ -4,6 +4,10 @@ import mongoose from "mongoose";
 const messageSchema = new mongoose.Schema({
   role: { type: String, required: true },
   content: { type: String, required: true },
+  data: {
+    photosLinks: { type: [String], default: [] },
+    generalLinks: { type: [String], default: [] },
+  },
   timestamp: { type: Date, default: Date.now, index: { expires: "15d" } },
 });
 

@@ -3,7 +3,7 @@ import { getInitialMessage } from "../utils/getInitialMessage";
 
 const useChat = (userName, userID) => {
   const [history, setHistory] = useState([
-    { role: "assistant", content: getInitialMessage(userName) },
+    { role: "assistant", content: getInitialMessage(userName), data: {} },
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
@@ -17,6 +17,7 @@ const useChat = (userName, userID) => {
       const formattedHistory = data?.chatHistory?.map((item) => ({
         role: item.role,
         content: item.content,
+        data: item.data || {},
       }));
       setHistory(formattedHistory);
     } catch (error) {
@@ -26,13 +27,18 @@ const useChat = (userName, userID) => {
 
   useEffect(() => {
     if (userName) {
-      setHistory([{ role: "assistant", content: getInitialMessage(userName) }]);
+      setHistory([
+        { role: "assistant", content: getInitialMessage(userName), data: {} },
+      ]);
       fetchHistory();
     }
   }, []);
 
   const sendMessage = async (message) => {
-    const newHistory = [...history, { role: "user", content: message }];
+    const newHistory = [
+      ...history,
+      { role: "user", content: message, data: {} },
+    ];
     setHistory(newHistory);
     setIsTyping(true);
 
@@ -58,6 +64,7 @@ const useChat = (userName, userID) => {
       ).map((item) => ({
         role: "assistant",
         content: item.content,
+        data: item.data || {},
       }));
 
       setHistory((prevHistory) => [...prevHistory, ...assistantMessages]);
