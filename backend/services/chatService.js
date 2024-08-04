@@ -55,8 +55,9 @@ const chatService = async (userMessage, username, history) => {
       model: "gpt-4o-mini",
       messages: messages,
       max_tokens: 200,
-      temperature: 0.7,
-      presence_penalty: 0.6,
+      temperature: 0.4, // Lower temperature for more relevant responses
+      presence_penalty: 0.2, // Moderate presence penalty to stay on topic
+      top_p: 0.9, // Use nucleus sampling to ensure coherence
     });
 
     const aiResponse = response.choices[0].message;
