@@ -7,6 +7,7 @@ export const photoLinks = [
 export const photoRequestPhrases = [
   "show me your photos",
   "show me some photos",
+  "show me some your images",
   "can I see your photos",
   "can you show me your photos",
   "can you show me your pictures",
@@ -15,6 +16,7 @@ export const photoRequestPhrases = [
   "share your photos",
   "photos please",
   "I want to see your photos",
+  "I want to see your images",
   "I want to see some photos",
   "I want to see your pictures",
   "I want to see some pictures",
