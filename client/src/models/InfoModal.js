@@ -64,7 +64,7 @@ const InfoModal = ({ open, onClose, onStart }) => {
           textAlign="center"
           sx={{ opacity: "95%", mt: 2 }}
         >
-          I am replica of Vinay. You can ask me anything about Vinay
+          This is Digital Version of Vinay. You can ask me anything about Vinay
         </Typography>
         <Box
           component="img"
