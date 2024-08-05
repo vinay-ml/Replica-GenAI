@@ -52,7 +52,7 @@ const NameModal = ({ open, onSubmit }) => {
         </Typography>
         <TextField
           fullWidth
-          label="Name"
+          // label="Your Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           sx={{ mt: 2 }}
