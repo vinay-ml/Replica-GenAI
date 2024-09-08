@@ -39,8 +39,8 @@ app.get("/ping", (req, res) => {
   res.send("Server is alive");
 });
 
-// Schedule a cron job to run every 15 minutes
-cron.schedule("*/15 * * * *", async () => {
+// Schedule a cron job to run every 10 minutes
+cron.schedule("*/10 * * * *", async () => {
   try {
     const response = await axios.get("https://v9replica.onrender.com/ping");
     console.log("Ping response:", response.data);
