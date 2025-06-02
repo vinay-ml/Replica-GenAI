@@ -52,12 +52,13 @@ const chatService = async (userMessage, username, history) => {
     ];
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4",
       messages: messages,
       max_tokens: 200,
-      temperature: 0.4, // Lower temperature for more relevant responses
-      presence_penalty: 0.2, // Moderate presence penalty to stay on topic
-      top_p: 0.9, // Use nucleus sampling to ensure coherence
+      temperature: 0, // Lower temperature for more relevant responses
+      presence_penalty: 0, // Moderate presence penalty to stay on topic
+      frequency_penalty: 0.2,
+      top_p: 1,
     });
 
     const aiResponse = response.choices[0].message;
