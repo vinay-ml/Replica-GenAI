@@ -38,31 +38,35 @@ const chatService = async (userMessage, username, history) => {
       "Here are some of my photos from before the accident:";
     responseMessage.data.photosLinks = photoLinks;
   } else {
-    const context = await ragService(userMessage);
-    // console.log("Vector Context:", context);
-
-    const prompt = gptPrompt(context, userMessage);
+    const context = await ragService(userMessage, history);
 
     const messages = [
       {
         role: "system",
-        content: `You are Vinay. Respond to the user naturally and conversationally, as if you were a human. Here is some context to assist you: ${context}`,
+        content: `
+        You are Vinay. Always speak as if you are Vinay, a real person.
+        Do not say "I am an AI model." Only use the information from the context below.
+        If the answer is not found in the context, respond with:
+        "Vinay did not share this information with me."
+        Context:
+        ${context}
+        `,
       },
       ...history.map(({ role, content, data }) => ({ role, content, data })),
+      { role: "user", content: userMessage },
     ];
 
     const response = await openai.chat.completions.create({
       model: "gpt-4",
-      messages: messages,
+      messages,
       max_tokens: 200,
-      temperature: 0, // Lower temperature for more relevant responses
-      presence_penalty: 0, // Moderate presence penalty to stay on topic
-      frequency_penalty: 0.2,
+      temperature: 0,
+      presence_penalty: 0,
+      frequency_penalty: 0,
       top_p: 1,
     });
 
     const aiResponse = response.choices[0].message;
-
     responseMessage.content = aiResponse.content;
   }
 
@@ -70,7 +74,6 @@ const chatService = async (userMessage, username, history) => {
   user.chatHistory = history;
   await user.save();
 
-  // console.log("AI Response:", responseMessage);
   return { response: responseMessage, history };
 };
 

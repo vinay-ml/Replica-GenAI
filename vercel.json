@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "backend/index.js", "use": "@vercel/node" },
+    { "src": "client/build/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    {
+      "src": "/(.*\\.(js|css|png|jpg|svg|ico|json|woff2?|ttf|map))",
+      "dest": "backend/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/build/$1"
+    }
+  ]
+}
